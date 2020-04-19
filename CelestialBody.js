@@ -1,5 +1,5 @@
 class CelestialBody {
-    constructor(x, y, mass, size, xVel, yVel, color) {
+    constructor(x, y, mass, size, xVel, yVel, color, isStationary) {
         this.pos = createVector(x, y);
         this.mass = mass;
         this.size = size;
@@ -7,13 +7,27 @@ class CelestialBody {
         this.color = color;
         this.netForce = createVector(0, 0);
         this.acc = createVector(0, 0);
+        this.stationary = isStationary;
     }
 
     update() {
-        const gravities = [];
+        if (!this.stationary) {
+            const forces = [];
 
-        this.vel.add(this.acc);
-        this.pos.add(this.vel);
+            for (let body of celestialBodies) {
+                if (this != body) {
+                    forces.push(calculateGravity(this, body));
+                }
+            }
+
+            //forces.push(this.vel);
+
+            this.acc = calcNetForce(forces);
+            this.vel.add(this.acc);
+            //this.vel.limit(50);
+
+            this.pos.add(this.vel);
+        }
     }
 
     show() {
