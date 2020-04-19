@@ -10,6 +10,8 @@ class CelestialBody {
     }
 
     update() {
+        const gravities = [];
+
         this.vel.add(this.acc);
         this.pos.add(this.vel);
     }
