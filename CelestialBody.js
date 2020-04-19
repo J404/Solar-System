@@ -21,8 +21,11 @@ class CelestialBody {
             }
 
             //forces.push(this.vel);
+            this.netForce = calcNetForce(forces);
 
-            this.acc = calcNetForce(forces);
+            this.acc = this.netForce;
+            this.acc.setMag(this.acc.mag() / this.mass);
+
             this.vel.add(this.acc);
             //this.vel.limit(50);
 
