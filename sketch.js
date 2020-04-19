@@ -1,6 +1,8 @@
 const celestialBodies = [];
 let startButton, stopButton;
 
+let sliders = [];
+
 let running = false;
 
 function setup() {
@@ -12,16 +14,17 @@ function setup() {
         running = true;
     });
 
-    stopButton = createButton("Stop");
-    stopButton.position(60, 10);
-    stopButton.mousePressed(() => {
-        running = false;
-    });
+    celestialBodies.push(new CelestialBody((width / 2) - 170, (height / 2) - 50, (5.972 * Math.pow(10, 20)), 5, 0, 9.75, 0, false)); // planet
+    celestialBodies.push(new CelestialBody((width / 2) - 170.003, (height / 2) - 50, (7.3 * Math.pow(10, 16)), 2, 0, 9.7, 0, false)); // moon
+    celestialBodies.push(new CelestialBody((width / 2), (height / 2)- 50, (1.989 * Math.pow(10, 26)), 20, 0, 0, 0, false)); // sun
+    celestialBodies.push(new CelestialBody((width / 2) - 175, height / 2, 52700000000, 20, 0, 0, 0));
 
-    celestialBodies.push(new CelestialBody((width / 2) - 150, (height / 2) - 50, (5.972 * Math.pow(10, 23)), 20, 0, 25, false));
-    celestialBodies.push(new CelestialBody((width / 2) - 165, (height / 2) - 50, (1.12 * Math.pow(10, 8)), 5, 0, 26.75, false));
-    celestialBodies.push(new CelestialBody((width / 2) + 100, (height / 2)- 50, (1.989 * Math.pow(10, 27)), 20, 0, 0, 0, false));
-    //celestialBodies.push(new CelestialBody((width / 2) - 175, height / 2, 52700000000, 20, 0, 0, 0));
+    for (let i = 0; i < celestialBodies.length; i++) {
+        const slider = createSlider(0, 75, celestialBodies[i].vel.y, 0.25);
+        slider.position(10, (i * 30) + 30);
+        slider.value(celestialBodies[i].vel.y);
+        sliders.push(slider);
+    }
 }
 
 function draw() {
@@ -35,13 +38,26 @@ function draw() {
         }
     }
 
+    if (!running) {
+        for (let i = 0; i < sliders.length; i++) {
+            noStroke();
+            fill("#FFFFFF");
+            text(sliders[i].value(), sliders[i].position().x + 125, sliders[i].position().y + 10);
+
+            if (celestialBodies[i].vel.y != sliders[i].value()) {
+                celestialBodies[i].vel.y = sliders[i].value();
+
+                for (let body of celestialBodies) {
+                    body.resetSimulatedPath();
+                }
+            }
+            celestialBodies[i].simulatePath();
+        }
+    }
+
     for (let body of celestialBodies) {
         body.show();
     }
-    
-    stroke("#FF0000");
-    //line(celestialBodies[0].pos.x, celestialBodies[0].pos.y, 
-    //    celestialBodies[0].pos.x + netForce.x, celestialBodies[0].pos.y + netForce.y);
 }
 
 function keyPressed() {
