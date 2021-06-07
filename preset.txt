@@ -1,0 +1,9 @@
+VARS FOR SIMPLE SOLAR SYSTEM MODEL
+SUN + PLANET + MOON IS POSSIBLE BUT DIFFICULT TO SIMULATE DUE TO LARGE DISTANCES NEEDED TO ACCURATELY REPRESENT REAL LIFE
+THEREFORE THESE ARE VALUES FOR A SIMPLE SOLAR SYSTEM MODEL
+
+nums in order of params for CelestialBody
+
+SUN: width / 2, height / 2 - 50, 1.989 * Math.pow(10, 26), 25, 0, 0, N/A, false
+PlANET1: width / 2 - 100, height / 2 - 50, 5.234 * Math.pow(10, 22), 10, 0, 11.062, N/A, false
+PLANET2:  width / 2 - 230, height / 2 - 50, 5.234 * Math.pow(10, 23), 15, 0, 6.9, N/A, false

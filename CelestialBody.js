@@ -11,6 +11,7 @@ class CelestialBody {
 
         this.theoreticalPos = createVector(x, y);
         this.theoreticalVel = createVector(xVel, yVel);
+        this.theoreticalAcc = createVector(0, 0);
         this.path = [ {x, y} ];
         this.simulating = false;
     }
@@ -19,29 +20,33 @@ class CelestialBody {
         this.simulating = true;
         const forces = [];
 
-        for (let body of celestialBodies) {
-            if (this != body) {
-                forces.push(calculateGravityTheoretical(this, body));
+        if (!this.stationary) {
+            for (let body of celestialBodies) {
+                if (this != body) {
+                    forces.push(calculateGravityTheoretical(this, body));
+                }
             }
+
+            //forces.push(this.vel);
+            this.netForce = calcNetForce(forces);
+
+            this.theoreticalAcc = p5.Vector.div(this.netForce, this.mass);
+            // this.acc.setMag(this.acc.mag() / this.mass);
+
+            this.theoreticalVel.add(this.theoreticalAcc);
+            //this.vel.limit(50);
+
+            this.theoreticalPos.add(this.theoreticalVel);
+            
+            this.path.push({
+                x: this.theoreticalPos.x,
+                y: this.theoreticalPos.y
+            });
+
+            this.drawSimulatedPath();
+            this.drawSimulatedVelocity();
+            this.drawSimulatedAcc();
         }
-
-        //forces.push(this.vel);
-        this.netForce = calcNetForce(forces);
-
-        this.acc = this.netForce;
-        this.acc.setMag(this.acc.mag() / this.mass);
-
-        this.theoreticalVel.add(this.acc);
-        //this.vel.limit(50);
-
-        this.theoreticalPos.add(this.theoreticalVel);
-        
-        this.path.push({
-            x: this.theoreticalPos.x,
-            y: this.theoreticalPos.y
-        });
-
-        this.drawSimulatedPath();
     }
 
     resetSimulatedPath() {
@@ -52,6 +57,7 @@ class CelestialBody {
 
         this.theoreticalPos = createVector(this.pos.x, this.pos.y);
         this.theoreticalVel = createVector(this.vel.x, this.vel.y);
+        this.theoreticalAcc = createVector(0, 0);
     }
 
     update() {
@@ -75,8 +81,8 @@ class CelestialBody {
             //forces.push(this.vel);
             this.netForce = calcNetForce(forces);
 
-            this.acc = this.netForce;
-            this.acc.setMag(this.acc.mag() / this.mass);
+            this.acc = p5.Vector.div(this.netForce, this.mass);
+            // this.acc.setMag(this.acc.mag() / this.mass);
 
             this.vel.add(this.acc);
             //this.vel.limit(50);
@@ -96,6 +102,24 @@ class CelestialBody {
         }
 
         endShape();
+    }
+
+    drawSimulatedVelocity() {
+        stroke("#FF0000");
+
+        const p1 = this.theoreticalPos;
+        const p2 = p5.Vector.add(this.theoreticalPos, this.theoreticalVel);
+
+        line(p1.x, p1.y, p2.x, p2.y);
+    }
+
+    drawSimulatedAcc() {
+        stroke('#FFA500');
+
+        const p1 = this.theoreticalPos;
+        const p2 = p5.Vector.add(this.theoreticalPos, this.theoreticalAcc);
+
+        line(p1.x, p1.y, p2.x, p2.y);
     }
 
     show() {

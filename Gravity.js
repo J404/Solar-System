@@ -10,6 +10,8 @@ const G = 6.674 * Math.pow(10, -11);
  */
 const calculateGravity = (bodyA, bodyB) => {
     const dist = p5.Vector.dist(bodyA.pos, bodyB.pos);
+    
+    // mass scaled to 1 kg
     const forceMag = (G * bodyA.mass * bodyB.mass) / Math.pow(dist * Math.pow(10, 6), 2);
 
     const diffVec = p5.Vector.sub(bodyB.pos, bodyA.pos);
