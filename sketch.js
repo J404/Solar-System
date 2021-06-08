@@ -1,3 +1,6 @@
+const mapWidth = 1050;
+const mapHeight = 900;
+
 const celestialBodies = [];
 let startButton, stopButton;
 
@@ -6,7 +9,7 @@ let sliders = [];
 let running = false;
 
 function setup() {
-  createCanvas(1050, 900);
+  createCanvas(mapWidth, mapHeight);
 
   startButton = createButton('Start');
   startButton.position(10, 10);
