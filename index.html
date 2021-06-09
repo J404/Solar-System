@@ -30,10 +30,12 @@
     <div id="app">
         <cb-data v-for="(celestialBody, i) in celestialBodies"
         :celestialbody="celestialBody"
-        :num="i + 1"
+        :num="i"
         :key="i"
         >
         </cb-data>
+        <button
+        @click="setSim(true)">Start</button>
     </div>
 </body>
 </html>

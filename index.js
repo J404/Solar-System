@@ -16,7 +16,19 @@ Vue.component('cb-data', {
   },
   methods: {
     newData: function() {
-      // alert('new data detected!');
+      const data = {
+        x: this.x, 
+        y: this.y,
+        mass: this.mass,
+        size: this.size,
+        xVel: this.xVel,
+        yVel: this.yVel,
+        color: this.color,
+        stationary: this.stationary,
+      };
+
+      updateBody(data, this.num);
+      console.log(data);
     }
   },
   template: `
@@ -25,45 +37,45 @@ Vue.component('cb-data', {
     <div>
       <span>X Position:</span>
       <input type="range" :min="0" :max="width"
-      v-model="x"
+      v-model.number="x"
       @change="newData()">
-      <input type="number" v-model="x">
+      <input type="number" v-model.number="x" @change="newData()">
     </div>
     <div>
       <span>Y Position:</span>
       <input type="range" :min="0" :max="height"
-      v-model="y"
+      v-model.number="y"
       @change="newData()">
-      <input type="number" v-model="y">
+      <input type="number" v-model.number="y" @change="newData()">
     </div>
     <div>
       <span>X Velocity:</span>
       <input type="range" :min="0" :max="100"
-      v-model="xVel"
+      v-model.number="xVel"
       @change="newData()">
-      <input type="number" v-model="xVel">
+      <input type="number" v-model.number="xVel" @change="newData()">
     </div>
     <div>
       <span>Y Velocity:</span>
       <input type="range" :min="0" :max="100"
-      v-model="yVel"
+      v-model.number="yVel"
       @change="newData()">
-      <input type="number" v-model="yVel">
+      <input type="number" v-model.number="yVel" @change="newData()">
     </div>
     <div>
       <span>Mass:</span>
       <input type="range" 
       :min="Math.pow(10, 14)" :max="Math.pow(10, 28)"
-      v-model="mass"
+      v-model.number="mass"
       @change="newData()">
-      <input type="number" v-model="mass">
+      <input type="number" v-model.number="mass" @change="newData()">
     </div>
     <div>
       <span>Size:</span>
       <input type="range" :min="0" :max="30"
-      v-model="size"
+      v-model.number="size"
       @change="newData()">
-      <input type="number" v-model="size">
+      <input type="number" v-model.number="size" @change="newData()">
     </div>
     <div>
       <span>Color:</span>
@@ -80,5 +92,10 @@ const app = new Vue({
   el: '#app',
   data: {
     celestialBodies: celestialBodies,
+  },
+  methods: {
+    setSim: function(status) {
+      setSim(status);
+    },
   },
 });

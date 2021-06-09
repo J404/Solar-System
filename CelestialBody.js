@@ -121,7 +121,7 @@ class CelestialBody {
 
     show() {
         noStroke();
-        fill("#00FF00");
+        fill(this.color);
 
         ellipse(this.pos.x, this.pos.y, this.size);
     }

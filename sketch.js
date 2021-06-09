@@ -8,14 +8,33 @@ let sliders = [];
 
 let running = false;
 
+// Receives data update from index.js component
+// Data is object with shape of celestialBody class
+const updateBody = (celestialBody, i) => {
+  const body = celestialBodies[i];
+
+  body.pos.x = celestialBody.x;
+  body.pos.y = celestialBody.y;
+  body.mass = celestialBody.mass;
+  body.size = celestialBody.size;
+  body.vel.x = celestialBody.xVel;
+  body.vel.y = celestialBody.yVel;
+  body.color = celestialBody.color;
+  body.stationary = celestialBody.stationary;
+
+  if (!running) {
+    for (let body of celestialBodies) {
+      body.resetSimulatedPath();
+    }
+  }
+}
+
+// Function to start or stop simulation
+const setSim = status => running = status;
+
+// p5js setup
 function setup() {
   createCanvas(mapWidth, mapHeight);
-
-  startButton = createButton('Start');
-  startButton.position(10, 10);
-  startButton.mousePressed(() => {
-    running = true;
-  });
 
   celestialBodies.push(
     new CelestialBody(
@@ -25,7 +44,7 @@ function setup() {
       25,
       0,
       0,
-      0,
+      '#00FF00',
       false
     )
   ); // sun
@@ -37,7 +56,7 @@ function setup() {
       10,
       0,
       11.062,
-      0,
+      '#00FF00',
       false
     )
   );
@@ -49,17 +68,10 @@ function setup() {
       15,
       0,
       6.9,
-      0,
+      '#00FF00',
       false
     )
   );
-
-  for (let i = 0; i < celestialBodies.length; i++) {
-    const slider = createSlider(0, 50, celestialBodies[i].vel.y, 0.001);
-    slider.position(10, i * 30 + 30);
-    slider.value(celestialBodies[i].vel.y);
-    sliders.push(slider);
-  }
 }
 
 function draw() {
@@ -71,26 +83,9 @@ function draw() {
     for (let body of celestialBodies) {
       body.update();
     }
-  }
-
-  if (!running) {
-    for (let i = 0; i < sliders.length; i++) {
-      noStroke();
-      fill('#FFFFFF');
-      text(
-        sliders[i].value(),
-        sliders[i].position().x + 125,
-        sliders[i].position().y + 10
-      );
-
-      if (celestialBodies[i].vel.y != sliders[i].value()) {
-        celestialBodies[i].vel.y = sliders[i].value();
-
-        for (let body of celestialBodies) {
-          body.resetSimulatedPath();
-        }
-      }
-      celestialBodies[i].simulatePath();
+  } else {
+    for (let body of celestialBodies) {
+      body.simulatePath();
     }
   }
 
