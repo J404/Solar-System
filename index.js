@@ -28,7 +28,6 @@ Vue.component('cb-data', {
       };
 
       updateBody(data, this.num);
-      console.log(data);
     }
   },
   template: `
@@ -92,10 +91,19 @@ const app = new Vue({
   el: '#app',
   data: {
     celestialBodies: celestialBodies,
+    test: running,
   },
   methods: {
     setSim: function(status) {
       setSim(status);
     },
+    reset: function() {
+      this.setSim(false);
+      const controls = this.$refs.controls;
+
+      for (let control of controls) {
+        control.newData();
+      }
+    }
   },
 });

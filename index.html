@@ -32,10 +32,15 @@
         :celestialbody="celestialBody"
         :num="i"
         :key="i"
+        ref="controls"
         >
         </cb-data>
         <button
         @click="setSim(true)">Start</button>
+        <button
+        @click="setSim(false)">Stop</button>
+        <button
+        @click="reset()">Reset</button>
     </div>
 </body>
 </html>
