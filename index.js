@@ -27,28 +27,28 @@ Vue.component('cb-data', {
       <input type="range" :min="0" :max="width"
       v-model="x"
       @change="newData()">
-      <span>{{x}}</span>
+      <input type="number" v-model="x">
     </div>
     <div>
       <span>Y Position:</span>
       <input type="range" :min="0" :max="height"
       v-model="y"
       @change="newData()">
-      <span>{{y}}</span>
+      <input type="number" v-model="y">
     </div>
     <div>
       <span>X Velocity:</span>
       <input type="range" :min="0" :max="100"
       v-model="xVel"
       @change="newData()">
-      <span>{{xVel}}</span>
+      <input type="number" v-model="xVel">
     </div>
     <div>
       <span>Y Velocity:</span>
       <input type="range" :min="0" :max="100"
       v-model="yVel"
       @change="newData()">
-      <span>{{yVel}}</span>
+      <input type="number" v-model="yVel">
     </div>
     <div>
       <span>Mass:</span>
@@ -56,14 +56,14 @@ Vue.component('cb-data', {
       :min="Math.pow(10, 14)" :max="Math.pow(10, 28)"
       v-model="mass"
       @change="newData()">
-      <span>{{mass}}</span>
+      <input type="number" v-model="mass">
     </div>
     <div>
       <span>Size:</span>
       <input type="range" :min="0" :max="30"
       v-model="size"
       @change="newData()">
-      <span>{{size}}</span>
+      <input type="number" v-model="size">
     </div>
     <div>
       <span>Color:</span>
