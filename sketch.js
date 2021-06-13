@@ -58,31 +58,31 @@ function setup() {
       25,
       0,
       0,
-      '#00FF00',
+      '#FFF700',
       false
     )
   ); // sun
   celestialBodies.push(
     new CelestialBody(
-      width / 2 - 100,
+      200,
       height / 2 - 50,
-      5.234 * Math.pow(10, 22),
-      10,
+      3 * Math.pow(10, 22),
+      20,
       0,
-      11.062,
-      '#00FF00',
+      5,
+      '#F08C00',
       false
     )
   );
   celestialBodies.push(
     new CelestialBody(
-      width / 2 - 230,
+      339,
       height / 2 - 50,
-      5.234 * Math.pow(10, 23),
-      15,
+      3 * Math.pow(10, 22),
+      10,
       0,
-      6.9,
-      '#00FF00',
+      7,
+      '#00FFB7',
       false
     )
   );
