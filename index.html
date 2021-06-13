@@ -8,16 +8,46 @@
     <!-- p5js cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
+    
+    <!-- Vue.js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 
     <!-- other files -->
-    <script src="sketch.js" defer></script>
-    <script src="CelestialBody.js" defer></script>
-    <script src="Gravity.js" defer></script>
-    <script src="Forces.js" defer></script>
-
+    <script src="sketch.js"></script>
+    <script src="CelestialBody.js"></script>
+    <script src="Gravity.js"></script>
+    <script src="Forces.js"></script>
+    
+    <!-- Vue files & components -->
+    <script src="index.js" defer></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
     <title>Solar System</title>
 </head>
 <body>
-    
+    <div id="app">
+        <div>
+            <cb-data v-for="(celestialBody, i) in celestialBodies"
+            :celestialbody="celestialBody"
+            :num="i"
+            :key="i"
+            ref="controls"
+            >
+            </cb-data>
+            <div>
+                <button
+                @click="newCelestialBody()">+</button>
+            </div>
+        </div>
+        
+        <button
+        @click="setSim(true)">Start</button>
+        <button
+        @click="setSim(false)">Stop</button>
+        <button
+        @click="reset()">Reset</button>
+    </div>
 </body>
 </html>

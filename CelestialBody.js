@@ -27,14 +27,11 @@ class CelestialBody {
                 }
             }
 
-            //forces.push(this.vel);
             this.netForce = calcNetForce(forces);
 
             this.theoreticalAcc = p5.Vector.div(this.netForce, this.mass);
-            // this.acc.setMag(this.acc.mag() / this.mass);
 
             this.theoreticalVel.add(this.theoreticalAcc);
-            //this.vel.limit(50);
 
             this.theoreticalPos.add(this.theoreticalVel);
             
@@ -124,7 +121,7 @@ class CelestialBody {
 
     show() {
         noStroke();
-        fill("#00FF00");
+        fill(this.color);
 
         ellipse(this.pos.x, this.pos.y, this.size);
     }
