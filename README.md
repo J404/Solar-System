@@ -12,3 +12,4 @@ However, the gravitational constant G is the same as real life, as well as the e
 I'm no physicist! This may be wrong (how I'm simulating things).
 
 Made using p5.js & Vue JS
+Updated for summer 2021 Westerly STEM Camp
