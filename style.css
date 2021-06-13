@@ -25,6 +25,36 @@ div#button-panel {
   margin-bottom: 1vh;
 }
 
+div#popup {
+  z-index: 3;
+  position: absolute;
+  left: 25%;
+  top: 30%;
+  width: 50vw;
+  height: 30vh;
+  background-color: white;
+  margin: auto;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+div#popup>div {
+  text-align: center;
+  margin-top: 0.2vh;
+  margin-bottom: 0.2vh;
+}
+
+div#backdrop {
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.85;
+}
+
 div.planet-control {
   display: inline-block;
   margin-right: 3vw;

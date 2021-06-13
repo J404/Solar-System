@@ -59,6 +59,52 @@
       
       <a href="https://github.com/J404/Solar-System"
       target="_blank">Source code</a>
+
+      <div id="backdrop"
+      v-if="showPopup"></div>
+      <div id="popup"
+      v-if="showPopup">
+          <div>
+            <h4>Attention:</h4>
+            <p>This site simulates gravitational attraction between various celestial bodies in space (planets, moons, stars, etc.)</p>
+            <p>It does this by using the values of mass, position, etc. inputted and calculating the real-life gravitational attraction between those bodies.</p>
+            <h4>For a brief explanation of the physics that this site shows:</h4>
+            <p>
+                Newton's Law of Universal Gravitation states that <i>all</i> objects in the universe attract each other with the force of gravity. It is not exclusive
+                to planets, stars, etc. Even the chair is slightly attracted to you due to gravity. Because neither of your masses are very large, the effect is almost
+                nothing, and almost always ignored.
+            </p>
+            <p>
+                However, planets, moons, and stars have masses so large that gravity has a very noticable effect on their movements. The force of gravity between two celestial bodies
+                is affected by <b>mass</b> (how much stuff is in an object) and <b>distance</b> (how far away two objects are). As the mass of either object increases, so does the gravitational
+                attraction. As distance between the objects increases, gravitational attraction rapidly decreases. In fact, increasing the distance between the two objects causes a much larger decrease in
+                gravity than the increase of increasing the mass of one object.
+            </p>
+            <p>
+                Planets orbit the sun because they had an initial velocity (or speed) in a straight line. Einstein theorized in his Theory of General Relativity that each planet actually moves in straight line,
+                and only orbit the sun in an elliptical (circular) path because of the effects of gravity on space-time. This means that, if the sun would randomly disappear, the planets would actually move
+                in straight lines, not their current orbits!
+            </p>
+            <p>
+                This topic is complicated. Additional video resources can be pursued <a href="https://youtu.be/R7V3koyL7Mc?t=77">here</a> for an explanation of General Relativity 
+                and <a href="https://youtu.be/uRijc-AN-F0">here</a> for a more accessible demonstration of it.
+            </p>
+            <h4>For this simulation:</h4>
+            <p>
+                You have free reign to change the number of bodies, the masses, sizes, disances, and more of every body in the simulation.
+            </p>
+            <p>
+                The blue path drawn is a simulated path that body will take. To actually see the simulation, click the Start button. To stop or pause the simulation, press the Stop button.
+                To reset the simulation, press the Reset button.
+            </p>
+            <p>
+                Remember, each planet needs to have a large mass and an initial velocity to actually orbit. Your best bet would be to set a large mass and an initial Y velocity, as shown in the example
+                planets first generated.
+            </p>
+          </div>
+          <button
+          @click="showPopup = false">Close</button>
+      </div>
     </div>
   </body>
 </html>

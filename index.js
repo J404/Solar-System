@@ -91,7 +91,7 @@ const app = new Vue({
   el: '#app',
   data: {
     celestialBodies: celestialBodies,
-    test: running,
+    showPopup: true,
   },
   methods: {
     setSim: function(status) {
