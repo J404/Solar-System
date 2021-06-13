@@ -32,7 +32,7 @@ Vue.component('cb-data', {
   },
   template: `
   <div class="planet-control">
-    <h3>Planet {{ num }}</h3>
+    <h3>Planet {{ num + 1}}</h3>
     <div>
       <span>X Position:</span>
       <input type="range" :min="0" :max="width"
@@ -104,6 +104,13 @@ const app = new Vue({
       for (let control of controls) {
         control.newData();
       }
+    },
+    newCelestialBody: function() {
+      this.celestialBodies.push(
+        new CelestialBody(500, 400, 3 * Math.pow(10, 22), 10, 0, 5, '#00FF00', false)
+      );
+
+      celestialBodies = this.celestialBodies;
     }
   },
 });

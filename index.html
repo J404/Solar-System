@@ -28,13 +28,20 @@
 </head>
 <body>
     <div id="app">
-        <cb-data v-for="(celestialBody, i) in celestialBodies"
-        :celestialbody="celestialBody"
-        :num="i"
-        :key="i"
-        ref="controls"
-        >
-        </cb-data>
+        <div>
+            <cb-data v-for="(celestialBody, i) in celestialBodies"
+            :celestialbody="celestialBody"
+            :num="i"
+            :key="i"
+            ref="controls"
+            >
+            </cb-data>
+            <div>
+                <button
+                @click="newCelestialBody()">+</button>
+            </div>
+        </div>
+        
         <button
         @click="setSim(true)">Start</button>
         <button
