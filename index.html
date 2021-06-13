@@ -28,7 +28,7 @@
 </head>
 <body>
     <div id="app">
-        <div>
+        <div id="container">
             <cb-data v-for="(celestialBody, i) in celestialBodies"
             :celestialbody="celestialBody"
             :num="i"
@@ -36,8 +36,8 @@
             ref="controls"
             >
             </cb-data>
-            <div>
-                <button
+            <div style="display:inline-block;">
+                <button id="new-button"
                 @click="newCelestialBody()">+</button>
             </div>
         </div>
