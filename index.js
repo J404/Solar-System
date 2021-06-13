@@ -28,11 +28,16 @@ Vue.component('cb-data', {
       };
 
       updateBody(data, this.num);
+    },
+    deleteBody: function() {
+      deleteBody(this.num);
     }
   },
   template: `
   <div class="planet-control">
     <h3>Body {{ num + 1}}</h3>
+    <button
+    @click="deleteBody()">- Delete</button>
     <div>
       <span>X Position:</span>
       <input type="range" :min="0" :max="width"

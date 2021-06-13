@@ -29,6 +29,11 @@ const updateBody = (celestialBody, i) => {
   }
 };
 
+// Delets a celestialBody from the array
+const deleteBody = i => {
+  celestialBodies.splice(i, 1);
+}
+
 // Function to start or stop simulation
 const setSim = (status) => {
   running = status;
