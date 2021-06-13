@@ -1,6 +1,28 @@
+@media screen and (min-width: 1200px) {
+  div#left-container, div#right-container {
+    position: relative;
+    width: 50%;
+  }
+
+  div#left-container {
+    float: left;
+  }
+
+  div#right-container {
+    float: right;
+  }
+}
+
 div#container {
   display: grid;
   grid-template-columns: 50% 50%;
+}
+
+div#button-panel {
+  width: 40vw;
+  margin: auto;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
 div.planet-control {

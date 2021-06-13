@@ -32,7 +32,7 @@ Vue.component('cb-data', {
   },
   template: `
   <div class="planet-control">
-    <h3>Planet {{ num + 1}}</h3>
+    <h3>Body {{ num + 1}}</h3>
     <div>
       <span>X Position:</span>
       <input type="range" :min="0" :max="width"

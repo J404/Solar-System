@@ -27,10 +27,10 @@ const updateBody = (celestialBody, i) => {
       body.resetSimulatedPath();
     }
   }
-}
+};
 
 // Function to start or stop simulation
-const setSim = status => {
+const setSim = (status) => {
   running = status;
 
   if (!status) {
@@ -38,11 +38,12 @@ const setSim = status => {
       body.resetSimulatedPath();
     }
   }
-}
+};
 
 // p5js setup
 function setup() {
-  createCanvas(mapWidth, mapHeight);
+  const canvas = createCanvas(mapWidth, mapHeight);
+  canvas.parent('canvas-container');
 
   celestialBodies.push(
     new CelestialBody(
