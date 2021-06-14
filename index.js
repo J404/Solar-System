@@ -84,6 +84,7 @@ Vue.component('cb-data', {
     <div>
       <span>Color:</span>
       <input type="color"      
+      class="col-input"
       v-model="color"
       @change="newData()">
       <span>{{color}}</span>
