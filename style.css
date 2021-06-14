@@ -1,4 +1,4 @@
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 2100px) {
   div#left-container, div#right-container {
     position: relative;
     width: 50%;
@@ -19,19 +19,28 @@ div#container {
 }
 
 div#button-panel {
+  display: flex;
+  justify-content: center;
+  
   width: 40vw;
   margin: auto;
-  margin-top: 1vh;
+  margin-top: 3vh;
   margin-bottom: 1vh;
+}
+
+div#button-panel>button {
+  padding: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 div#popup {
   z-index: 3;
   position: absolute;
   left: 25%;
-  top: 30%;
+  top: 20%;
   width: 50vw;
-  height: 30vh;
+  height: 40vh;
   background-color: white;
   margin: auto;
   padding: 10px;
